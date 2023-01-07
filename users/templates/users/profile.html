@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>salom</h1>
+
+
+
+<div class="card p-4">
+     <div class=" image d-flex flex-column justify-content-center align-items-center">
+         <button class="btn btn-secondary"> <img class="pic"  alt="profile picture" src="{{ user.profile_picture.url }}" height="100" width="100" />
+         </button>
+         <span class="name mt-3">{{user.username}} {{user.last_name}}</span>
+         <span class="idd">@{{user.email}}</span>
+
+
+     <div class=" d-flex mt-2">
+         <a class="btn1 btn-dark" href="{% url 'users:profile-edit' %}">edit profile</a>
+     </div>
+
+         <span class="join">Joined {{ user.date_joined |date:"M d, Y"}}</span>
+     </div>
+  </div>
+{% endblock %}

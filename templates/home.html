@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title%} Home Page {% endblock %}
+
+{% block content %}
+<h3>Hi everyone</h3>
+
+{% for review in course_reviews %}
+   <div style="background-color: green;" class="container posts-content">
+    <div class="row">
+        <div class="col-lg-6">
+            <div style="color: red;" class="card mb-4">
+              <div class="card-body">
+                <div class="media mb-3">
+                  <img style="width: 200px; height: 200px; border-radius: 50%;" src="{{ review.user.profile_picture.url }}" class="d-block ui-w-40 rounded-circle" alt="">
+                  <div class="media-body ml-3">
+                    <b>{{ review.user.username }}</b> bu kursni  baxoladi  {{ review.stars_given }} yulduz bilan
+                    <div class="text-muted small">{{ review.created_at }}</div>
+                  </div>
+                </div>
+
+                <p>
+                  {{ review.comment }}
+                </p>
+                  <img class="cover_pic center" src="{{ review.course.cover_picture.url }}">
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}

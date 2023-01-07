@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>s</h1>
+
+<div class="row mb-3">
+    <div class="col-4">
+        <form class="d-flex" method="get">
+            <input class="form-control me-2" type="text" placeholder="qidiruv" name="q" value="{{ search_query }}">
+            <button class="btn btn-success">Qidirish</button>
+        </form>
+    </div>
+</div>
+    {% if courses %}
+    {% for course in courses %}
+
+    <div class="row mb-4">
+        <div class="col-2">
+         <img class="cover_pic" src="{{ course.cover_picture.url }}">
+        </div>
+
+        <div class="col-6 ms-5">
+          <a href="{% url 'courses:detail' course.id%}">{{ course.title }}</a>
+            <p>
+                {{ course.description }}
+            </p>
+        </div>
+    </div>
+
+
+    {% endfor %}
+
+
+{% else %}
+Afsuski kurslar topilmadi
+<p>kurs uchun admin: <a href="https://t.me/hello_World1317" target="_blank">Admin</a></p>
+{% endif %}
+{% endblock %}
